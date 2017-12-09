@@ -7,14 +7,18 @@ import {AppComponent} from './app.component';
 
 import {NavigationComponent} from './components/navigation/navigation.component';
 import {MaterialComponentsModule} from './core/modules/material-components.module';
+import {PublicAreaModule} from './public-area/modules/public-area.module';
+import {PrivateAreaModule} from './private-area/modules/private-area.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
+    NavigationComponent
   ],
   imports: [
     CoreModule,
+    PrivateAreaModule,
+    PublicAreaModule,
     MaterialComponentsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
