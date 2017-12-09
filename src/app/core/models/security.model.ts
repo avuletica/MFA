@@ -8,7 +8,6 @@ export class SecurityModel {
     this.authToken = authToken;
     this.password = password;
     this.refreshToken = refreshToken;
-    this.tenant = tenant;
     this.username = username;
   }
 }
