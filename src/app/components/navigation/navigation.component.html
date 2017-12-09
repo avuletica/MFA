@@ -3,7 +3,7 @@
     <a [routerLink]="['/home']" class="custom-link">Home</a>
     <a [routerLink]="['/news']" class="custom-link">News</a>
     <a [routerLink]="['/contact']" class="custom-link">Contact</a>
-    <a *ngIf="authService.isLoggedIn()" [routerLink]="['/forum']" class="custom-link">Forum</a>
+    <a [routerLink]="['/forum']" class="custom-link">Forum</a>
     <a *ngIf="authService.isLoggedIn()" [routerLink]="['/profile']" class="custom-link">Profile</a>
     <a *ngIf="!authService.isLoggedIn()" [routerLink]="['/login']" class="custom-link">Login</a>
     <a *ngIf="authService.isLoggedIn()" [routerLink]="['/logout']" class="custom-link">Logout</a>
