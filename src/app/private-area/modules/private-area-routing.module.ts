@@ -1,9 +1,12 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
 import {ProfileComponent} from '../components/profile/profile.component';
+import {ForumComponent} from '../components/forum/forum.component';
+import {AuthGuardService} from '../../core/guards/auth-guard.service';
 
 const routes: Routes = [
-  {path: 'profile', component: ProfileComponent}
+  {path: 'profile', component: ProfileComponent, canActivate: [AuthGuardService]},
+  {path: 'forum', component: ForumComponent, canActivate: [AuthGuardService]}
 ];
 
 @NgModule({

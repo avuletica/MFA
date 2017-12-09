@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {SharedModule} from '../../shared/shared.module';
 import {PrivateAreaRoutingModule} from './private-area-routing.module';
 import {ProfileComponent} from '../components/profile/profile.component';
+import {ForumComponent} from '../components/forum/forum.component';
 
 @NgModule({
   imports: [
@@ -9,7 +10,8 @@ import {ProfileComponent} from '../components/profile/profile.component';
     PrivateAreaRoutingModule
   ],
   declarations: [
-    ProfileComponent
+    ProfileComponent,
+    ForumComponent
   ]
 })
 export class PrivateAreaModule {
