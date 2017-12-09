@@ -1,21 +1,22 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 
 
-import { ServiceWorkerModule } from '@angular/service-worker';
-import { AppComponent } from './app.component';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {AppComponent} from './app.component';
 
-import { environment } from '../environments/environment';
+import {environment} from '../environments/environment';
+import {CoreModule} from './core/modules/core.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
-    BrowserModule,
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    CoreModule,
+    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production})
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
