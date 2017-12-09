@@ -4,6 +4,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
+import {FlexLayoutModule} from '@angular/flex-layout';
 import {AuthService} from '../services/auth.service';
 import {AuthGuardService} from '../guards/auth-guard.service';
 
@@ -13,14 +14,16 @@ import {AuthGuardService} from '../guards/auth-guard.service';
     BrowserAnimationsModule,
     CommonModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    FlexLayoutModule
   ],
   exports: [
     BrowserModule,
     BrowserAnimationsModule,
     CommonModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    FlexLayoutModule
   ],
   declarations: [],
   providers: [
