@@ -5,7 +5,6 @@ import {LoginComponent} from '../components/login/login.component';
 import {NewsComponent} from '../components/news/news.component';
 import {ContactComponent} from '../components/contact/contact.component';
 import {HomeComponent} from '../components/home/home.component';
-import {LogoutComponent} from '../components/logout/logout.component';
 
 @NgModule({
   imports: [
@@ -17,7 +16,6 @@ import {LogoutComponent} from '../components/logout/logout.component';
     NewsComponent,
     ContactComponent,
     LoginComponent,
-    LogoutComponent
   ]
 })
 export class PublicAreaModule {
