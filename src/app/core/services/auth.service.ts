@@ -33,9 +33,8 @@ export class AuthService {
   }
 
   private setSession(authResult): void {
-    this.loggedIn = true;
-
     if (this.redirectUrl && authResult) {
+      this.loggedIn = true;
       this.router.navigate([this.redirectUrl]);
     }
   }
