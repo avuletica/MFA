@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthService} from '../../../core/services/auth.service';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -9,17 +10,22 @@ import {MatSnackBar} from '@angular/material';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  hide: boolean;
+  loginFormGroup: FormGroup;
   username: string;
   password: string;
+  hide: boolean;
 
-  constructor(public snackBar: MatSnackBar, private authService: AuthService, private router: Router) {
+  constructor(public snackBar: MatSnackBar, private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
     this.hide = true;
     this.username = '';
     this.password = '';
+    this.loginFormGroup = this.formBuilder.group({
+      username: ['', Validators.required],
+      password: ['', Validators.required]
+    });
   }
 
   onLoginSubmit(): void {

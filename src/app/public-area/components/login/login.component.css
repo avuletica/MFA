@@ -1,13 +1,7 @@
-.example-container {
-  display: flex;
-  flex-direction: column;
-  padding: 30px;
-}
-
-.example-container > * {
-  width: 100%;
-}
-
 #login-wrap {
-  margin-top: 150px;
+  margin-top: 200px;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset;
 }

@@ -1,18 +1,22 @@
-<div class="center-vh" id="login-wrap">
-  <form class="example-container mat-elevation-z9">
-    <mat-form-field>
-      <input matInput placeholder="Enter your username" autoComplete="off" type="text" [(ngModel)]="username"
-             name="username">
-      <mat-icon matSuffix>account_box</mat-icon>
-    </mat-form-field>
+<div fxFlex="20" fxFlexOffset="40" id="login-wrap">
+  <form [formGroup]="loginFormGroup" (ngSubmit)="onLoginSubmit(loginFormGroup.value)">
+    <div fxLayout="column">
+      <mat-form-field>
+        <input matInput placeholder="Enter your username" autoComplete="off" type="text" [(ngModel)]="username"
+               formControlName="username">
+        <mat-icon matSuffix>account_box</mat-icon>
+      </mat-form-field>
 
-    <mat-form-field>
-      <input matInput placeholder="Enter your password" autoComplete="off" [(ngModel)]="password"
-             [type]="hide ? 'password' : 'text'" name="password">
-      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-    </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Enter your password" autoComplete="off" [(ngModel)]="password"
+               [type]="hide ? 'password' : 'text'" formControlName="password">
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      </mat-form-field>
 
-    <button mat-raised-button (click)="onLoginSubmit()">Login</button>
+      <button mat-raised-button [disabled]="!loginFormGroup.valid">Login</button>
+    </div>
+
+
   </form>
 </div>
 
