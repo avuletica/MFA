@@ -1,3 +1,33 @@
-<p>
-  profile works!
-</p>
+<div fxLayout="row" style="margin-top: 25px" *ngIf="userInformation">
+  <div fxFlex="40" fxFlexOffset="30" class="mat-elevation-z9">
+
+    <div fxFlex="30">
+      <img src="assets/images/profile.png" style="padding: 10px 0 0 10px">
+    </div>
+
+    <div fxFlex="65" style="margin-top: 10px">
+      <div fxLayout="column">
+        <mat-form-field>
+          <input matInput placeholder="First name" [disabled]="true" [(ngModel)]="userInformation.firstName">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Last name" [disabled]="true" [(ngModel)]="userInformation.lastName">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Username" [disabled]="true" [(ngModel)]="userInformation.username">
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Email" [disabled]="true" [(ngModel)]="userInformation.email">
+        </mat-form-field>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+

@@ -7,6 +7,7 @@ import {RouterModule} from '@angular/router';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {AuthService} from '../services/auth.service';
 import {AuthGuardService} from '../guards/auth-guard.service';
+import {UserService} from '../services/user.service';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import {AuthGuardService} from '../guards/auth-guard.service';
   providers: [
     AuthService,
     AuthGuardService,
+    UserService
   ],
 })
 export class CoreModule {
