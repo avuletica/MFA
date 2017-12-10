@@ -1,5 +1,8 @@
-<div fxFlex="20" fxFlexOffset="40" id="login-wrap">
-  <form [formGroup]="loginFormGroup" (ngSubmit)="onLoginSubmit()">
+<div fxFlex="20" fxFlexOffset="40" id="login-wrap" class="mat-elevation-z9">
+  <div class="custom-header">
+    Login
+  </div>
+  <form [formGroup]="loginFormGroup" (ngSubmit)="onLoginSubmit()" style="padding: 30px">
     <div fxLayout="column">
       <mat-form-field>
         <input matInput placeholder="Enter your username" autoComplete="off" type="text" [(ngModel)]="username"
@@ -15,7 +18,6 @@
 
       <button mat-raised-button [disabled]="!loginFormGroup.valid">Login</button>
     </div>
-
 
   </form>
 </div>
