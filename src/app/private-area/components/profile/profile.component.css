@@ -3,7 +3,8 @@
   color: #ffffff;
   text-align: center;
   padding: 10px 0;
-  font-weight: bold
+  font-weight: bold;
+  font-size: larger;
 }
 
 .profile-avatar {
