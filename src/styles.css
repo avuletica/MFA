@@ -10,3 +10,26 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.custom-header {
+  background-color: #414FB0;
+  color: #ffffff;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: bold;
+  font-size: larger;
+}
+
+.profile-avatar {
+  padding: 25px 0 0 10px;
+  max-width: 140px;
+  max-height: 140px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.pad-left-20 {
+  padding-left: 20px;
+}

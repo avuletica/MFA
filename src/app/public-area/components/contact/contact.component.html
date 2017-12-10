@@ -1,3 +1,101 @@
-<p>
-  contact works!
-</p>
+<!--Team section-->
+<div fxLayout="row">
+  <div fxFlex="40" fxFlexOffset="30" class="mat-elevation-z4" style="margin-top: 25px">
+    <div class="custom-header">
+      Team members
+    </div>
+    <div fxLayout="row">
+      <!--Profile avatar-->
+      <div fxFlex="30">
+        <img src="assets/images/avatar.png" class="profile-avatar">
+      </div>
+
+      <!--Profile information-->
+      <div fxFlex="65" style="margin-top: 20px">
+        <div fxLayout="column">
+          <div fxFlex="100">
+
+            <mat-form-field fxFlex="40">
+              <input matInput placeholder="First name" [disabled]="true" value="Ante">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="40" fxFlexOffset="10">
+              <input matInput placeholder="Last name" [disabled]="true" value="Vuletic Antic">
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="100">
+            <mat-form-field fxFlex="40">
+              <input matInput placeholder="Username" [disabled]="true" value="avuletica">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="40" fxFlexOffset="10">
+              <input matInput placeholder="Email" [disabled]="true" value="vuletic23@gmail.com">
+            </mat-form-field>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div fxLayout="row" style="margin-top: 5px">
+      <!--Profile avatar-->
+      <div fxFlex="30">
+        <img src="assets/images/avatar.png" class="profile-avatar">
+      </div>
+
+      <!--Profile information-->
+      <div fxFlex="65" style="margin-top: 20px">
+        <div fxLayout="column">
+          <div fxFlex="100">
+
+            <mat-form-field fxFlex="40">
+              <input matInput placeholder="First name" [disabled]="true" value="Nikola">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="40" fxFlexOffset="10">
+              <input matInput placeholder="Last name" [disabled]="true" value="Svalina">
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="100">
+            <mat-form-field fxFlex="40">
+              <input matInput placeholder="Username" [disabled]="true" value="nsvali">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="40" fxFlexOffset="10">
+              <input matInput placeholder="Email" [disabled]="true" value="nsvali00@fesb.hr">
+            </mat-form-field>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Project section-->
+<div fxLayout="row">
+  <div fxFlex="40" fxFlexOffset="30" class="mat-elevation-z9" style="margin-top: 25px">
+    <div class="custom-header">
+      Project status
+    </div>
+
+    <mat-list>
+      <mat-list-item>
+        <a href="https://github.com/avuletica/MFA" class="full-width">https://github.com/avuletica/MFA</a>
+        <mat-progress-bar mode="determinate" value="40" class="pad-left-20"></mat-progress-bar>
+      </mat-list-item>
+      <mat-list-item>
+        <a href="https://github.com/avuletica/MFA-REST-API" class="full-width">https://github.com/avuletica/MFA-REST-API</a>
+        <mat-progress-bar mode="determinate" value="23" class="pad-left-20"></mat-progress-bar>
+      </mat-list-item>
+      <mat-list-item>
+        <a href="https://github.com/avuletica/MFA-Android" class="full-width">https://github.com/avuletica/MFA-Android</a>
+        <mat-progress-bar mode="determinate" value="10" class="pad-left-20"></mat-progress-bar>
+      </mat-list-item>
+    </mat-list>
+
+  </div>
+</div>
+
