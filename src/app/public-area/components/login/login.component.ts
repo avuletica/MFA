@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
       res => res ?
         this.router.navigate(['/home']) :
         snackBarRef = this.snackBar.open('Login failed', 'Close', {duration: 1500}),
-      (err) => console.log(err)
+      () =>  snackBarRef = this.snackBar.open('Authorization server is offline', 'Close', {duration: 1500})
     );
   }
 
