@@ -1,5 +1,5 @@
 <div fxFlex="20" fxFlexOffset="40" id="login-wrap">
-  <form [formGroup]="loginFormGroup" (ngSubmit)="onLoginSubmit(loginFormGroup.value)">
+  <form [formGroup]="loginFormGroup" (ngSubmit)="onLoginSubmit()">
     <div fxLayout="column">
       <mat-form-field>
         <input matInput placeholder="Enter your username" autoComplete="off" type="text" [(ngModel)]="username"
