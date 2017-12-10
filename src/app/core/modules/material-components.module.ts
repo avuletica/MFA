@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {MatButtonModule, MatInputModule} from '@angular/material';
+import {MatButtonModule, MatInputModule, MatStepperModule} from '@angular/material';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -15,7 +15,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
       MatIconModule,
       MatFormFieldModule,
       MatSidenavModule,
-      MatSnackBarModule
+      MatSnackBarModule,
+      MatStepperModule
     ],
   exports:
     [
@@ -25,7 +26,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
       MatIconModule,
       MatFormFieldModule,
       MatSidenavModule,
-      MatSnackBarModule
+      MatSnackBarModule,
+      MatStepperModule
     ],
 })
 export class MaterialComponentsModule {

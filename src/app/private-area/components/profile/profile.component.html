@@ -1,31 +1,87 @@
 <div fxLayout="row" style="margin-top: 25px" *ngIf="userInformation">
-  <div fxFlex="40" fxFlexOffset="30" class="mat-elevation-z9">
-
-    <div fxFlex="30">
-      <img src="assets/images/profile.png" style="padding: 10px 0 0 10px">
+  <div fxFlex="40" fxFlexOffset="30" class="mat-elevation-z6">
+    <div class="profile-header">
+      Account information
     </div>
 
-    <div fxFlex="65" style="margin-top: 10px">
-      <div fxLayout="column">
-        <mat-form-field>
-          <input matInput placeholder="First name" [disabled]="true" [(ngModel)]="userInformation.firstName">
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="Last name" [disabled]="true" [(ngModel)]="userInformation.lastName">
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="Username" [disabled]="true" [(ngModel)]="userInformation.username">
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="Email" [disabled]="true" [(ngModel)]="userInformation.email">
-        </mat-form-field>
+    <div fxLayout="row">
+      <!--Profile avatar-->
+      <div fxFlex="30">
+        <img src="assets/images/avatar.png" class="profile-avatar">
       </div>
 
-    </div>
+      <!--Profile information-->
+      <div fxFlex="65" style="margin-top: 20px">
+        <div fxLayout="column">
+          <div fxFlex="100">
 
+            <mat-form-field fxFlex="40">
+              <input matInput placeholder="First name" [disabled]="true" [(ngModel)]="userInformation.firstName">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="40" fxFlexOffset="10">
+              <input matInput placeholder="Last name" [disabled]="true" [(ngModel)]="userInformation.lastName">
+            </mat-form-field>
+          </div>
+
+          <div fxFlex="100">
+            <mat-form-field fxFlex="40">
+              <input matInput placeholder="Username" [disabled]="true" [(ngModel)]="userInformation.username">
+            </mat-form-field>
+
+            <mat-form-field fxFlex="40" fxFlexOffset="10">
+              <input matInput placeholder="Email" [disabled]="true" [(ngModel)]="userInformation.email">
+            </mat-form-field>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--Stepper-->
+<div fxLayout="row">
+  <div fxFlex="40" fxFlexOffset="30" class="mat-elevation-z6" style="margin-top: 20px">
+    <div class="profile-header">
+      Account security
+    </div>
+    <mat-horizontal-stepper [linear]="isLinear">
+      <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+          <ng-template matStepLabel>Verify password</ng-template>
+          <mat-form-field>
+            <input matInput placeholder="Password" formControlName="firstCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step [stepControl]="secondFormGroup">
+        <form [formGroup]="secondFormGroup">
+          <ng-template matStepLabel>Mobile token</ng-template>
+          <mat-form-field>
+            <input matInput placeholder="Token" formControlName="secondCtrl" required>
+          </mat-form-field>
+          <div>
+            <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+            <button mat-raised-button color="primary" matStepperNext>Next</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        You have enabled two factor authentication!
+        <div>
+          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+        </div>
+      </mat-step>
+    </mat-horizontal-stepper>
   </div>
 
 </div>
