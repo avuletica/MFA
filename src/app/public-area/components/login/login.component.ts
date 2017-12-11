@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     let snackBarRef;
     this.authService.login(this.username, this.password).subscribe(
       res => res ?
-        this.router.navigate(['/home']) :
+        snackBarRef = this.snackBar.open('Welcome', 'Close', {duration: 2000}) :
         snackBarRef = this.snackBar.open('Login failed', 'Close', {duration: 2000}),
       () =>  snackBarRef = this.snackBar.open('Authorization server is offline', 'Close', {duration: 2000})
     );
