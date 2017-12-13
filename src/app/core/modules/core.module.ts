@@ -8,6 +8,7 @@ import {FlexLayoutModule} from '@angular/flex-layout';
 import {AuthService} from '../services/auth.service';
 import {AuthGuardService} from '../guards/auth-guard.service';
 import {UserService} from '../services/user.service';
+import {ProfileResolverService} from '../resolvers/profile-resolver.service';
 
 @NgModule({
   imports: [
@@ -30,7 +31,8 @@ import {UserService} from '../services/user.service';
   providers: [
     AuthService,
     AuthGuardService,
-    UserService
+    UserService,
+    ProfileResolverService
   ],
 })
 export class CoreModule {
