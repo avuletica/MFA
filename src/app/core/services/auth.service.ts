@@ -5,11 +5,13 @@ import {SecurityModel} from '../models/security.model';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/shareReplay';
 import {Observable} from 'rxjs/Observable';
+import {UserModel} from '../models/user.model';
 
 @Injectable()
 export class AuthService {
   readonly restServiceApiUrl = 'http://localhost:8080';
   readonly loginEndpoint = '/api/security/login';
+  readonly userKey = 'username';
   loggedIn: boolean;
   redirectUrl: string;
 
@@ -26,14 +28,16 @@ export class AuthService {
   public logout(): void {
     this.loggedIn = false;
     this.router.navigate(['/home']);
+    localStorage.clear();
   }
 
   public isLoggedIn(): boolean {
     return this.loggedIn;
   }
 
-  private setSession(authResult): void {
+  private setSession(authResult: UserModel): void {
     if (authResult) {
+      localStorage.setItem(this.userKey, authResult.username);
       this.loggedIn = true;
     }
 

@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
       secondCtrl: ['', Validators.required]
     });
 
-    this.userService.getUserInformation('ante')
+    this.userService.getUserInformation(localStorage.getItem('username'))
       .subscribe(res => this.userInformation = res,
         (err) => console.log(err),
         () => console.log('this.userInformation', this.userInformation));

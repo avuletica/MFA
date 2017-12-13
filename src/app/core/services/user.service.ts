@@ -16,7 +16,6 @@ export class UserService {
 
   public getUserInformation(username: string): Observable<UserModel> {
     return this.http.get<UserModel>(this.restServiceApiUrl + this.getUserInformationEndpoint + '/' + username);
-
   }
 
 }
