@@ -1,10 +1,9 @@
 <div fxLayout="row" style="margin-top: 25px">
-  <div fxFlex="40" fxFlexOffset="30" class="mat-elevation-z6">
-    <div class="custom-header">
-      Account Details
+  <div fxFlex="40" fxFlexOffset="30" class="mat-elevation-z8">
+    <div class="row">
+      <div class="custom-header">Profile information</div>
     </div>
-
-    <div fxLayout="row">
+    <div class="row">
       <!--Profile avatar-->
       <div fxFlex="30">
         <img src="assets/images/avatar.png" class="profile-avatar">
@@ -33,55 +32,128 @@
               <input matInput placeholder="Email" [disabled]="true" [(ngModel)]="userInformation.email">
             </mat-form-field>
           </div>
-
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!--Stepper-->
-<div fxLayout="row">
-  <div fxFlex="40" fxFlexOffset="30" class="mat-elevation-z6" style="margin-top: 20px">
-    <div class="custom-header">
-      Account Security
+<!--2 Two Factor Authentication-->
+<div fxLayout="row" style="margin-top: 25px">
+  <div fxFlex="40" fxFlexOffset="30" class="mat-elevation-z8">
+    <div class="row">
+      <div class="custom-header">Two Factor Authentication</div>
     </div>
-    <mat-horizontal-stepper [linear]="isLinear">
-      <mat-step [stepControl]="firstFormGroup">
-        <form [formGroup]="firstFormGroup">
-          <ng-template matStepLabel>Verify password</ng-template>
-          <mat-form-field>
-            <input matInput placeholder="Password" formControlName="firstCtrl" required>
-          </mat-form-field>
-          <div>
-            <button mat-raised-button color="primary" matStepperNext>Next</button>
-          </div>
-        </form>
-      </mat-step>
+    <mat-accordion class="example-headers-align">
+      <!--App authenticator-->
+      <mat-expansion-panel hideToggle="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Authenticator app
+          </mat-panel-title>
+          <mat-panel-description>
+            Authenticator on android mobile
+            <mat-icon>android</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
 
-      <mat-step [stepControl]="secondFormGroup">
-        <form [formGroup]="secondFormGroup">
-          <ng-template matStepLabel>Mobile token</ng-template>
-          <mat-form-field>
-            <input matInput placeholder="Token" formControlName="secondCtrl" required>
-          </mat-form-field>
-          <div>
-            <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-            <button mat-raised-button color="primary" matStepperNext>Next</button>
-          </div>
-        </form>
-      </mat-step>
+        <mat-horizontal-stepper [linear]="isLinear">
+          <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>Verify password</ng-template>
+              <mat-form-field>
+                <input matInput placeholder="Password" formControlName="firstCtrl" required>
+              </mat-form-field>
+              <div>
+                <button mat-raised-button color="primary" matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
 
-      <mat-step>
-        <ng-template matStepLabel>Done</ng-template>
-        You have enabled two factor authentication!
-        <div>
-          <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-        </div>
-      </mat-step>
-    </mat-horizontal-stepper>
+          <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>Mobile token</ng-template>
+              <mat-form-field>
+                <input matInput placeholder="Token" formControlName="secondCtrl" required>
+              </mat-form-field>
+              <div>
+                <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                <button mat-raised-button color="primary" matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            You have enabled mobile authenticator!
+          </mat-step>
+        </mat-horizontal-stepper>
+
+      </mat-expansion-panel>
+      <!-- Text message codes-->
+      <mat-expansion-panel hideToggle="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Mobile phone
+          </mat-panel-title>
+          <mat-panel-description>
+            Add phone number for sms verification
+            <mat-icon>perm_phone_msg</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <mat-horizontal-stepper [linear]="isLinear">
+          <mat-step [stepControl]="firstFormGroup">
+            <form [formGroup]="firstFormGroup">
+              <ng-template matStepLabel>Verify password</ng-template>
+              <mat-form-field>
+                <input matInput placeholder="Password" formControlName="firstCtrl" required>
+              </mat-form-field>
+              <div>
+                <button mat-raised-button color="primary" matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step [stepControl]="secondFormGroup">
+            <form [formGroup]="secondFormGroup">
+              <ng-template matStepLabel>Mobile number</ng-template>
+              <mat-form-field>
+                <input matInput placeholder="Token" formControlName="secondCtrl" required>
+              </mat-form-field>
+              <div>
+                <button mat-raised-button color="primary" matStepperPrevious>Back</button>
+                <button mat-raised-button color="primary" matStepperNext>Next</button>
+              </div>
+            </form>
+          </mat-step>
+
+          <mat-step>
+            <ng-template matStepLabel>Done</ng-template>
+            You have enabled SMS two factor authentication!
+          </mat-step>
+        </mat-horizontal-stepper>
+
+      </mat-expansion-panel>
+      <!--Backup codes-->
+      <mat-expansion-panel hideToggle="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            Backup codes
+          </mat-panel-title>
+          <mat-panel-description>
+            For time when your phone is unavailable
+            <mat-icon>backup</mat-icon>
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+
+        Backup codes here
+
+      </mat-expansion-panel>
+
+    </mat-accordion>
   </div>
-
 </div>
+
 
 
