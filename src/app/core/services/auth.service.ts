@@ -39,9 +39,9 @@ export class AuthService {
     if (authResult) {
       localStorage.setItem(this.userKey, authResult.username);
       this.loggedIn = true;
+      this.redirectUrl ? this.router.navigate([this.redirectUrl]) : this.router.navigate(['/home']);
+      this.redirectUrl = null;
     }
-
-    this.redirectUrl ? this.router.navigate([this.redirectUrl]) : this.router.navigate(['/home']);
   }
 
 }
