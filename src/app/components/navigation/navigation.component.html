@@ -9,6 +9,7 @@
   <a [routerLink]="['/forum']" class="custom-link">Forum</a>
   <a *ngIf="authService.isLoggedIn()" [routerLink]="['/profile']" class="custom-link">Profile</a>
   <a *ngIf="!authService.isLoggedIn()" [routerLink]="['/login']" class="custom-link">Login</a>
+  <a *ngIf="!authService.isLoggedIn()" [routerLink]="['/signup']" class="custom-link">Signup</a>
   <a *ngIf="authService.isLoggedIn()" (click)="authService.logout()" class="custom-link">Logout</a>
 
 </mat-toolbar>

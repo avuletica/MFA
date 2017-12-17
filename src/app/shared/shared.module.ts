@@ -21,4 +21,5 @@ import {FlexLayoutModule} from '@angular/flex-layout';
   ],
   declarations: []
 })
-export class SharedModule { }
+export class SharedModule {
+}
