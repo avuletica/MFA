@@ -10,13 +10,13 @@ import {UserModel} from '../models/user.model';
 @Injectable()
 export class AuthService {
   readonly restServiceApiUrl = 'http://localhost:8080';
-  readonly loginEndpoint = '/api/security/login';
-  readonly userKey = 'username';
-  loggedIn: boolean;
+  readonly loginEndpoint = '/login';
+  readonly signupEndpoint = '/users/sign-up';
+  readonly authTokenKey = 'authToken';
   redirectUrl: string;
 
   constructor(private http: HttpClient, private router: Router) {
-    this.loggedIn = false;
+
   }
 
   public login(username: string, password: string): Observable<SecurityModel> {
@@ -25,23 +25,31 @@ export class AuthService {
       .shareReplay();
   }
 
+  public signup(username: string, password: string): Observable<any> {
+    return this.http.post<UserModel>(this.restServiceApiUrl + this.signupEndpoint, {username, password})
+      .do(res => this.setSession(res))
+      .shareReplay();
+  }
+
   public logout(): void {
-    this.loggedIn = false;
     this.router.navigate(['/home']);
-    localStorage.clear();
+    this.removeSession();
   }
 
   public isLoggedIn(): boolean {
-    return this.loggedIn;
+    return !!localStorage.getItem(this.authTokenKey);
   }
 
-  private setSession(authResult: UserModel): void {
+  private setSession(authResult: SecurityModel): void {
     if (authResult) {
-      localStorage.setItem(this.userKey, authResult.username);
-      this.loggedIn = true;
+      localStorage.setItem(this.authTokenKey, authResult.authToken);
       this.redirectUrl ? this.router.navigate([this.redirectUrl]) : this.router.navigate(['/home']);
       this.redirectUrl = null;
     }
+  }
+
+  private removeSession(): void {
+    localStorage.removeItem(this.authTokenKey);
   }
 
 }
