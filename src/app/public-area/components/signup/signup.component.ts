@@ -29,6 +29,9 @@ export class SignupComponent implements OnInit {
   }
 
   onSignupSubmit(): void {
+    this.authService.signup(this.username, this.password).subscribe(
+      res => console.log('Signup: ', res.headers)
+    );
 
   }
 

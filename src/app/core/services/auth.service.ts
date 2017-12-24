@@ -1,11 +1,9 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
-import {SecurityModel} from '../models/security.model';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/shareReplay';
 import {Observable} from 'rxjs/Observable';
-import {UserModel} from '../models/user.model';
 
 @Injectable()
 export class AuthService {
@@ -19,14 +17,24 @@ export class AuthService {
 
   }
 
-  public login(username: string, password: string): Observable<SecurityModel> {
-    return this.http.post<SecurityModel>(this.restServiceApiUrl + this.loginEndpoint, {username, password})
+  public login(username: string, password: string): Observable<any> {
+    const user = {
+      'username': username,
+      'password': password
+    };
+    return this.http.post<any>(this.restServiceApiUrl + this.loginEndpoint, user, {observe: 'response'})
       .do(res => this.setSession(res))
       .shareReplay();
   }
 
   public signup(username: string, password: string): Observable<any> {
-    return this.http.post<UserModel>(this.restServiceApiUrl + this.signupEndpoint, {username, password})
+    const user = {
+      'username': username,
+      'password': password
+    };
+
+    console.log(user);
+    return this.http.post<any>(this.restServiceApiUrl + this.signupEndpoint, user)
       .do(res => this.setSession(res))
       .shareReplay();
   }
@@ -40,9 +48,12 @@ export class AuthService {
     return !!localStorage.getItem(this.authTokenKey);
   }
 
-  private setSession(authResult: SecurityModel): void {
+  private setSession(authResult: any): void {
+    const extractToken = authResult.headers.get('authorization').split(' ')[1];
+    console.log(extractToken);
+
     if (authResult) {
-      localStorage.setItem(this.authTokenKey, authResult.authToken);
+      localStorage.setItem(this.authTokenKey, extractToken);
       this.redirectUrl ? this.router.navigate([this.redirectUrl]) : this.router.navigate(['/home']);
       this.redirectUrl = null;
     }

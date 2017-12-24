@@ -3,6 +3,8 @@ import {AuthService} from '../../../core/services/auth.service';
 import {Router} from '@angular/router';
 import {MatSnackBar} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
+import {reject} from 'q';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
   password: string;
   hide: boolean;
 
-  constructor(public snackBar: MatSnackBar, private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(public snackBar: MatSnackBar, private authService: AuthService, private router: Router, private formBuilder: FormBuilder, private http: HttpClient) {
   }
 
   ngOnInit() {
@@ -29,13 +31,6 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginSubmit(): void {
-    let snackBarRef;
-    this.authService.login(this.username, this.password).subscribe(
-      res => res ?
-        snackBarRef = this.snackBar.open('Welcome', 'Close', {duration: 2000}) :
-        snackBarRef = this.snackBar.open('Login failed', 'Close', {duration: 2000}),
-      () =>  snackBarRef = this.snackBar.open('Authorization server is offline', 'Close', {duration: 2000})
-    );
+    this.authService.login(this.username, this.password).subscribe();
   }
-
 }
