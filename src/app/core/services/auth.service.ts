@@ -1,9 +1,11 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {Router} from '@angular/router';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/shareReplay';
 import {Observable} from 'rxjs/Observable';
+import {UserModel} from '../models/user.model';
+import {isNullOrUndefined} from 'util';
 
 @Injectable()
 export class AuthService {
@@ -14,27 +16,17 @@ export class AuthService {
   redirectUrl: string;
 
   constructor(private http: HttpClient, private router: Router) {
-
   }
 
-  public login(username: string, password: string): Observable<any> {
-    const user = {
-      'username': username,
-      'password': password
-    };
-    return this.http.post<any>(this.restServiceApiUrl + this.loginEndpoint, user, {observe: 'response'})
+  public login(user: UserModel): Observable<HttpResponse<UserModel>> {
+    return this.http.post<UserModel>(this.restServiceApiUrl + this.loginEndpoint, user, {observe: 'response'})
       .do(res => this.setSession(res))
       .shareReplay();
   }
 
-  public signup(username: string, password: string): Observable<any> {
-    const user = {
-      'username': username,
-      'password': password
-    };
-
+  public signup(user: UserModel): Observable<UserModel> {
     console.log(user);
-    return this.http.post<any>(this.restServiceApiUrl + this.signupEndpoint, user)
+    return this.http.post<UserModel>(this.restServiceApiUrl + this.signupEndpoint, user)
       .do(res => this.setSession(res))
       .shareReplay();
   }
@@ -49,10 +41,13 @@ export class AuthService {
   }
 
   private setSession(authResult: any): void {
-    const extractToken = authResult.headers.get('authorization').split(' ')[1];
-    console.log(extractToken);
+    let extractToken;
 
-    if (authResult) {
+    if (!isNullOrUndefined(authResult.headers)) {
+      extractToken = authResult.headers.get('authorization').split(' ')[1];
+    }
+
+    if (authResult && extractToken) {
       localStorage.setItem(this.authTokenKey, extractToken);
       this.redirectUrl ? this.router.navigate([this.redirectUrl]) : this.router.navigate(['/home']);
       this.redirectUrl = null;

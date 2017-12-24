@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../core/services/auth.service';
+import {UserModel} from '../../../core/models/user.model';
 
 @Component({
   selector: 'app-signup',
@@ -29,10 +30,10 @@ export class SignupComponent implements OnInit {
   }
 
   onSignupSubmit(): void {
-    this.authService.signup(this.username, this.password).subscribe(
-      res => console.log('Signup: ', res.headers)
-    );
-
+    const user = new UserModel();
+    user.username = this.username;
+    user.password = this.password;
+    this.authService.signup(user).subscribe();
   }
 
 }

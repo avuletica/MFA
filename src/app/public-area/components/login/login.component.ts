@@ -5,6 +5,7 @@ import {MatSnackBar} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
 import {reject} from 'q';
+import {UserModel} from '../../../core/models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -31,6 +32,9 @@ export class LoginComponent implements OnInit {
   }
 
   onLoginSubmit(): void {
-    this.authService.login(this.username, this.password).subscribe();
+    const user = new UserModel();
+    user.username = this.username;
+    user.password = this.password;
+    this.authService.login(user).subscribe();
   }
 }
