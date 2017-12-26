@@ -1,27 +1,30 @@
-<div fxFlex="20" fxFlexOffset="40" id="login-wrap" class="mat-elevation-z9">
-  <div class="custom-header">
-    Login
-  </div>
-  <form [formGroup]="loginFormGroup" (ngSubmit)="onLoginSubmit()" style="padding: 30px">
-    <div fxLayout="column">
-      <mat-form-field>
-        <input matInput placeholder="Enter your username" autoComplete="off" type="text" [(ngModel)]="username"
-               formControlName="username">
-        <mat-icon matSuffix>account_box</mat-icon>
-      </mat-form-field>
-
-      <mat-form-field>
-        <input matInput placeholder="Enter your password" autoComplete="off" [(ngModel)]="password"
-               [type]="hide ? 'password' : 'text'" formControlName="password">
-        <mat-icon matSuffix (click)="hide = !hide" style="cursor: pointer">
-          {{hide ? 'visibility' : 'visibility_off'}}
-        </mat-icon>
-      </mat-form-field>
-
-      <button mat-raised-button [disabled]="!loginFormGroup.valid">Login</button>
+<div fxLayout="row" fxLayoutAlign="center none" class="margin-top-5-pctl">
+  <div class="mat-elevation-z9">
+    <div class="custom-header">
+      Login
     </div>
+    <form [formGroup]="loginFormGroup" (ngSubmit)="onLoginSubmit()" style="padding: 30px">
+      <div fxLayout="column">
+        <mat-form-field>
+          <input matInput placeholder="Enter your username" autoComplete="off" type="text" [(ngModel)]="username"
+                 formControlName="username">
+          <mat-icon matSuffix>account_box</mat-icon>
+        </mat-form-field>
 
-  </form>
+        <mat-form-field>
+          <input matInput placeholder="Enter your password" autoComplete="off" [(ngModel)]="password"
+                 [type]="hide ? 'password' : 'text'" formControlName="password">
+          <mat-icon matSuffix (click)="hide = !hide" style="cursor: pointer">
+            {{hide ? 'visibility' : 'visibility_off'}}
+          </mat-icon>
+        </mat-form-field>
+
+        <button mat-raised-button [disabled]="!loginFormGroup.valid">Login</button>
+      </div>
+
+    </form>
+  </div>
 </div>
+
 
 
