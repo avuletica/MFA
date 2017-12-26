@@ -15,20 +15,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 @NgModule({
   imports:
-    [
-      MatButtonModule,
-      MatToolbarModule,
-      MatInputModule,
-      MatIconModule,
-      MatFormFieldModule,
-      MatSidenavModule,
-      MatSnackBarModule,
-      MatStepperModule,
-      MatCardModule,
-      MatListModule,
-      MatProgressBarModule,
-      MatExpansionModule
-    ],
+    [],
   exports:
     [
       MatButtonModule,

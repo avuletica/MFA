@@ -5,11 +5,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
 import {FlexLayoutModule} from '@angular/flex-layout';
-import {AuthService} from '../services/auth/auth.service';
-import {AuthGuardService} from '../guards/auth-guard.service';
-import {UserService} from '../services/user/user.service';
-import {ProfileResolverService} from '../resolvers/profile-resolver.service';
-import {NotificationService} from '../services/notification/notification.service';
+import {AuthService} from './services/auth/auth.service';
+import {AuthGuardService} from './guards/auth-guard.service';
+import {UserService} from './services/user/user.service';
+import {ProfileResolverService} from './resolvers/profile-resolver.service';
+import {NotificationService} from './services/notification/notification.service';
 
 @NgModule({
   imports: [
