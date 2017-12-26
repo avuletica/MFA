@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MatSnackBar} from '@angular/material';
 import {Router} from '@angular/router';
-import {AuthService} from '../../../core/services/auth.service';
+import {AuthService} from '../../../core/services/auth/auth.service';
 import {UserModel} from '../../../core/models/user.model';
 
 @Component({
@@ -16,7 +16,7 @@ export class SignupComponent implements OnInit {
   password: string;
   hide: boolean;
 
-  constructor(public snackBar: MatSnackBar, private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
@@ -33,7 +33,13 @@ export class SignupComponent implements OnInit {
     const user = new UserModel();
     user.username = this.username;
     user.password = this.password;
-    this.authService.signup(user).subscribe();
+
+    this.authService.signup(user).subscribe(
+      res => {
+        console.log(res);
+        // TODO: set session && error handling
+      }
+    );
   }
 
 }

@@ -4,7 +4,7 @@ import {Router} from '@angular/router';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/shareReplay';
 import {Observable} from 'rxjs/Observable';
-import {UserModel} from '../models/user.model';
+import {UserModel} from '../../models/user.model';
 import {isNullOrUndefined} from 'util';
 
 @Injectable()
@@ -19,16 +19,11 @@ export class AuthService {
   }
 
   public login(user: UserModel): Observable<HttpResponse<UserModel>> {
-    return this.http.post<UserModel>(this.restServiceApiUrl + this.loginEndpoint, user, {observe: 'response'})
-      .do(res => this.setSession(res))
-      .shareReplay();
+    return this.http.post<UserModel>(this.restServiceApiUrl + this.loginEndpoint, user, {observe: 'response'});
   }
 
   public signup(user: UserModel): Observable<UserModel> {
-    console.log(user);
-    return this.http.post<UserModel>(this.restServiceApiUrl + this.signupEndpoint, user)
-      .do(res => this.setSession(res))
-      .shareReplay();
+    return this.http.post<UserModel>(this.restServiceApiUrl + this.signupEndpoint, user);
   }
 
   public logout(): void {
@@ -40,7 +35,7 @@ export class AuthService {
     return !!localStorage.getItem(this.authTokenKey);
   }
 
-  private setSession(authResult: any): void {
+  public setSession(authResult: any): void {
     let extractToken;
 
     if (!isNullOrUndefined(authResult.headers)) {
@@ -54,7 +49,7 @@ export class AuthService {
     }
   }
 
-  private removeSession(): void {
+  public removeSession(): void {
     localStorage.removeItem(this.authTokenKey);
   }
 

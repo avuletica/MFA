@@ -1,11 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../../../core/services/auth.service';
+import {AuthService} from '../../../core/services/auth/auth.service';
 import {Router} from '@angular/router';
-import {MatSnackBar} from '@angular/material';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {HttpClient} from '@angular/common/http';
-import {reject} from 'q';
 import {UserModel} from '../../../core/models/user.model';
+import {NotificationService} from '../../../core/services/notification/notification.service';
+
 
 @Component({
   selector: 'app-login',
@@ -18,7 +17,10 @@ export class LoginComponent implements OnInit {
   password: string;
   hide: boolean;
 
-  constructor(public snackBar: MatSnackBar, private authService: AuthService, private router: Router, private formBuilder: FormBuilder, private http: HttpClient) {
+  constructor(private authService: AuthService,
+              private router: Router,
+              private formBuilder: FormBuilder,
+              public notificationService: NotificationService) {
   }
 
   ngOnInit() {
@@ -35,6 +37,19 @@ export class LoginComponent implements OnInit {
     const user = new UserModel();
     user.username = this.username;
     user.password = this.password;
-    this.authService.login(user).subscribe();
+
+    this.authService.login(user).subscribe(
+      res => {
+        if (res.status === 200) {
+          this.authService.setSession(res);
+        }
+      },
+      err => {
+        if (err.status === 401) {
+          this.notificationService.openSnackBar(err.error.message, '');
+        }
+      }
+    );
   }
+
 }
