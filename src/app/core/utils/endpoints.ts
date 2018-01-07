@@ -4,8 +4,9 @@ export function endpoints() {
   const api = environment.api;
   return {
     auth: {
-      login: api + '/login',
+      login: api + '/security/login',
       signup: api + '/security/sign-up',
+      user: api + '/security/user'
     }
   };
 }
