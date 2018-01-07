@@ -13,46 +13,13 @@ import {isNullOrUndefined} from 'util';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  loginFormGroup: FormGroup;
-  username: string;
-  password: string;
-  hide: boolean;
 
-  constructor(private authService: AuthService,
-              private router: Router,
-              private formBuilder: FormBuilder,
-              public notificationService: NotificationService) {
+  constructor() {
   }
 
   ngOnInit() {
-    this.hide = true;
-    this.username = '';
-    this.password = '';
-    this.loginFormGroup = this.formBuilder.group({
-      username: ['', Validators.required],
-      password: ['', Validators.required]
-    });
+
   }
 
-  onLoginSubmit(): void {
-    const user = new UserModel();
-    user.username = this.username;
-    user.password = this.password;
-
-    this.authService.login(user).subscribe(
-      res => {
-        if (res.status === 200) {
-          this.authService.setSession(res);
-        }
-      },
-      err => {
-        if (err.status === 401) {
-          this.notificationService.openSnackBar(err.error.message, '');
-        } else if (isNullOrUndefined(err.error.message)) {
-          this.notificationService.openSnackBar('Authentication server is unavailable', '');
-        }
-      }
-    );
-  }
 
 }
