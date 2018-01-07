@@ -6,12 +6,10 @@ import 'rxjs/add/operator/shareReplay';
 import {Observable} from 'rxjs/Observable';
 import {UserModel} from '../../models/user.model';
 import {isNullOrUndefined} from 'util';
+import {endpoints} from '../../utils/endpoints';
 
 @Injectable()
 export class AuthService {
-  readonly restServiceApiUrl = 'http://localhost:8080';
-  readonly loginEndpoint = '/login';
-  readonly signupEndpoint = '/users/sign-up';
   readonly authTokenKey = 'authToken';
   redirectUrl: string;
 
@@ -19,11 +17,11 @@ export class AuthService {
   }
 
   public login(user: UserModel): Observable<HttpResponse<UserModel>> {
-    return this.http.post<UserModel>(this.restServiceApiUrl + this.loginEndpoint, user, {observe: 'response'});
+    return this.http.post<UserModel>(endpoints().auth.login, user, {observe: 'response'});
   }
 
   public signup(user: UserModel): Observable<UserModel> {
-    return this.http.post<UserModel>(this.restServiceApiUrl + this.signupEndpoint, user);
+    return this.http.post<UserModel>(endpoints().auth.signup, user);
   }
 
   public logout(): void {
