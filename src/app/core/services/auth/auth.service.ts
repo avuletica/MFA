@@ -51,7 +51,7 @@ export class AuthService {
 
     if (authResult && extractToken) {
       localStorage.setItem(this.authTokenKey, extractToken);
-      this.redirectUrl ? this.router.navigate([this.redirectUrl]) : this.router.navigate(['/home']);
+      // this.redirectUrl ? this.router.navigate([this.redirectUrl]) : this.router.navigate(['/home']);
       this.redirectUrl = null;
     }
   }

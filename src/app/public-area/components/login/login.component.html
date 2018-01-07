@@ -3,7 +3,8 @@
     <div class="custom-header">
       Login
     </div>
-    <app-login-form></app-login-form>
+    <app-login-form *ngIf="!authService.isLoggedIn()"></app-login-form>
+    <app-authentication-form *ngIf="authService.isLoggedIn()"></app-authentication-form>
   </div>
 </div>
 
