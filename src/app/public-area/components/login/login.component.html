@@ -1,11 +1,18 @@
 <div fxLayout="row" fxLayoutAlign="center none" class="margin-top-5-pctl">
-  <div class="mat-elevation-z9">
+  <div *ngIf="!authService.isLoggedIn()" class="mat-elevation-z9">
     <div class="custom-header">
       Login
     </div>
-    <app-login-form *ngIf="!authService.isLoggedIn()"></app-login-form>
-    <app-authentication-form *ngIf="authService.isLoggedIn()"></app-authentication-form>
+    <app-login-form ></app-login-form>
   </div>
+
+  <div *ngIf="authService.isLoggedIn()" class="mat-elevation-z9">
+    <div class="custom-header">
+      Two factor authentication
+    </div>
+    <app-authentication-form ></app-authentication-form>
+  </div>
+
 </div>
 
 
