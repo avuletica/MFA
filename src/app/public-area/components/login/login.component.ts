@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserModel} from '../../../core/models/user.model';
 import {NotificationService} from '../../../core/services/notification/notification.service';
+import {isNullOrUndefined} from 'util';
 
 
 @Component({
@@ -47,6 +48,8 @@ export class LoginComponent implements OnInit {
       err => {
         if (err.status === 401) {
           this.notificationService.openSnackBar(err.error.message, '');
+        } else if (isNullOrUndefined(err.error.message)) {
+          this.notificationService.openSnackBar('Authentication server is unavailable', '');
         }
       }
     );
