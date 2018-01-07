@@ -5,7 +5,7 @@ export class UserModel {
   username?: string;
   password?: string;
   email?: string;
-  backupCodes?: Array<number>;
+  backupCodes?: Array<string>;
 
   constructor(id?: number,
               firstName?: string,
@@ -13,7 +13,7 @@ export class UserModel {
               username?: string,
               password?: string,
               email?: string,
-              backupCodes?: Array<number>) {
+              backupCodes?: Array<string>) {
 
     this.id = id;
     this.firstName = firstName;
