@@ -24,6 +24,15 @@ export class AuthService {
     return this.http.post<UserModel>(endpoints().auth.signup, user);
   }
 
+  public getUserInformation(username: string): Observable<UserModel> {
+    return this.http.get<UserModel>(endpoints().auth.user + '/' + username);
+  }
+
+  public getAuthToken(): string {
+    console.log(localStorage.getItem(this.authTokenKey));
+    return localStorage.getItem(this.authTokenKey);
+  }
+
   public logout(): void {
     this.router.navigate(['/home']);
     this.removeSession();
