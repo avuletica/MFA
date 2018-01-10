@@ -1,0 +1,54 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Backup codes
+      </mat-panel-title>
+      <mat-panel-description>
+        Type your recovery code
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input matInput placeholder="Recovery code" [(ngModel)]="backupCode">
+    </mat-form-field>
+
+    <button mat-raised-button (click)="verifyBackupCode()">Submit</button>
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Mobile token
+      </mat-panel-title>
+      <mat-panel-description>
+        Type your mobile token
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input matInput placeholder="Mobile token"  [(ngModel)]="mobileToken">
+    </mat-form-field>
+
+    <button mat-raised-button (click)="verifyMobileToken()">Submit</button>
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        Phone code
+      </mat-panel-title>
+      <mat-panel-description>
+        Type your sms code
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+
+    <mat-form-field>
+      <input matInput placeholder="Mobile token"  [(ngModel)]="smsCode">
+    </mat-form-field>
+
+    <button mat-raised-button (click)="verifySmsCode()">Submit</button>
+
+  </mat-expansion-panel>
+</mat-accordion>

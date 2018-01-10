@@ -1,5 +1,5 @@
 import {NgModule} from '@angular/core';
-import {SharedModule} from '../../shared/shared.module';
+import {SharedModule} from '../../shared/modules/shared.module';
 import {PrivateAreaRoutingModule} from './private-area-routing.module';
 import {ProfileComponent} from '../components/profile/profile.component';
 import {ForumComponent} from '../components/forum/forum.component';

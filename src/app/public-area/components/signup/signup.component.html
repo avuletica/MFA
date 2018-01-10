@@ -1,0 +1,26 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="margin-top-5-pctl">
+  <div class="mat-elevation-z9">
+    <div class="custom-header">
+      Signup
+    </div>
+    <form [formGroup]="signupFormGroup" (ngSubmit)="onSignupSubmit()" style="padding: 30px">
+      <div fxLayout="column">
+        <mat-form-field>
+          <input matInput placeholder="Enter your username" type="text" [(ngModel)]="username"
+                 formControlName="username_f">
+          <mat-icon matSuffix>account_box</mat-icon>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Enter your password" autocomplete="new-password" [(ngModel)]="password"
+                 [type]="hide ? 'password' : 'text'" formControlName="password_f">
+          <mat-icon matSuffix (click)="hide = !hide" style="cursor: pointer">
+            {{hide ? 'visibility' : 'visibility_off'}}
+          </mat-icon>
+        </mat-form-field>
+
+        <button mat-raised-button [disabled]="!signupFormGroup.valid">Signup</button>
+      </div>
+    </form>
+  </div>
+</div>

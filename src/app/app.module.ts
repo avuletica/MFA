@@ -1,12 +1,12 @@
 import {NgModule} from '@angular/core';
 
 import {environment} from '../environments/environment';
-import {CoreModule} from './core/modules/core.module';
+import {CoreModule} from './core/core.module';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {AppComponent} from './app.component';
 
 import {NavigationComponent} from './components/navigation/navigation.component';
-import {MaterialComponentsModule} from './core/modules/material-components.module';
+import {MaterialComponentsModule} from './shared/modules/material-components.module';
 import {PublicAreaModule} from './public-area/modules/public-area.module';
 import {PrivateAreaModule} from './private-area/modules/private-area.module';
 
