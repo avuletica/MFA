@@ -6,7 +6,10 @@ export function endpoints() {
     auth: {
       login: api + '/security/login',
       signup: api + '/security/sign-up',
-      user: api + '/security/user'
+    },
+    user: {
+      information: api + '/security/user',
+      backupCodes: api + '/security/backupCodes'
     }
   };
 }

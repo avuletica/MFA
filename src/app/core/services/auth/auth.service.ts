@@ -24,12 +24,7 @@ export class AuthService {
     return this.http.post<UserModel>(endpoints().auth.signup, user);
   }
 
-  public getUserInformation(username: string): Observable<UserModel> {
-    return this.http.get<UserModel>(endpoints().auth.user + '/' + username);
-  }
-
   public getAuthToken(): string {
-    console.log(localStorage.getItem(this.authTokenKey));
     return localStorage.getItem(this.authTokenKey);
   }
 
@@ -42,18 +37,22 @@ export class AuthService {
     return !!localStorage.getItem(this.authTokenKey);
   }
 
-  public setSession(authResult: any): void {
-    let extractToken;
-
-    if (!isNullOrUndefined(authResult.headers)) {
-      extractToken = authResult.headers.get('authorization').split(' ')[1];
-    }
-
-    if (authResult && extractToken) {
-      localStorage.setItem(this.authTokenKey, extractToken);
-      // this.redirectUrl ? this.router.navigate([this.redirectUrl]) : this.router.navigate(['/home']);
+  public setSession(token: string): void {
+    if (token) {
+      localStorage.setItem(this.authTokenKey, token);
+      this.redirectUrl ? this.router.navigate([this.redirectUrl]) : this.router.navigate(['/home']);
       this.redirectUrl = null;
     }
+  }
+
+  public extractJwtToken(data: any): string {
+    let extractToken;
+
+    if (!isNullOrUndefined(data.headers)) {
+      extractToken = data.headers.get('authorization').split(' ')[1];
+    }
+
+    return extractToken;
   }
 
   public removeSession(): void {
