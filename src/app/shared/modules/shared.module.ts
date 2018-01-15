@@ -4,7 +4,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MaterialComponentsModule} from './material-components.module';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {LoginFormComponent} from '../forms/login-form/login-form.component';
-import {AuthenticationFormComponent} from '../forms/authentication-form/authentication-form.component';
 
 @NgModule({
   imports: [
@@ -21,11 +20,9 @@ import {AuthenticationFormComponent} from '../forms/authentication-form/authenti
     MaterialComponentsModule,
     FlexLayoutModule,
     LoginFormComponent,
-    AuthenticationFormComponent
   ],
   declarations: [
     LoginFormComponent,
-    AuthenticationFormComponent
   ]
 })
 export class SharedModule {

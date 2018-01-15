@@ -6,6 +6,7 @@ import {NotificationService} from '../../../core/services/notification/notificat
 import {isNullOrUndefined} from 'util';
 import {UserModel} from '../../../core/models/user.model';
 import {SharedDataService} from '../../../core/services/shared-data/shared-data.service';
+import {UserService} from '../../../core/services/user/user.service';
 
 @Component({
   selector: 'app-login-form',
@@ -19,6 +20,7 @@ export class LoginFormComponent implements OnInit {
   hide: boolean;
 
   constructor(private authService: AuthService,
+              private userService: UserService,
               private router: Router,
               private formBuilder: FormBuilder,
               public notificationService: NotificationService,
@@ -46,7 +48,16 @@ export class LoginFormComponent implements OnInit {
           const token = this.authService.extractJwtToken(res);
           localStorage.setItem('username', this.username);
           this.sharedDataService.updateJwtToken(token);
-          this.router.navigate(['/two-step-verification']);
+          this.authService.setSession(this.sharedDataService.getJwtToken());
+
+          this.userService.getUserInformation(this.username).subscribe(
+            response => {
+              response.backupCodeActive ?
+                this.router.navigate(['/two-step-verification']) :
+                this.router.navigate(['/profile']);
+            },
+            error => this.authService.removeSession()
+          );
         }
       },
       err => {

@@ -40,7 +40,10 @@ export class AuthService {
   public setSession(token: string): void {
     if (token) {
       localStorage.setItem(this.authTokenKey, token);
-      this.redirectUrl ? this.router.navigate([this.redirectUrl]) : this.router.navigate(['/home']);
+
+      if (this.redirectUrl) {
+        this.router.navigate([this.redirectUrl]);
+      }
       this.redirectUrl = null;
     }
   }
