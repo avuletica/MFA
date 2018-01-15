@@ -6,6 +6,7 @@ import {UserService} from '../../../../core/services/user/user.service';
 import {NotificationService} from '../../../../core/services/notification/notification.service';
 
 import 'rxjs/add/operator/map';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-backup-code',
@@ -20,8 +21,8 @@ export class BackupCodeComponent implements OnInit {
   constructor(private authService: AuthService,
               private userService: UserService,
               private formBuilder: FormBuilder,
-              public sharedDataService: SharedDataService,
-              public notificationService: NotificationService,) {
+              private router: Router,
+              public notificationService: NotificationService) {
   }
 
   ngOnInit() {
@@ -36,8 +37,6 @@ export class BackupCodeComponent implements OnInit {
   onSubmit(): void {
     let backupCodes;
 
-    this.authService.setSession(this.sharedDataService.getJwtToken());
-
     // TODO: delete used code on success @ backend
 
     this.userService.getUserBackupCodes(localStorage.getItem('username')).subscribe(
@@ -51,6 +50,8 @@ export class BackupCodeComponent implements OnInit {
         if (!backupCodes.includes(this.inputCode)) {
           this.notificationService.openSnackBar('Invalid backup code', '');
           this.authService.removeSession();
+        } else {
+          this.router.navigate(['/profile']);
         }
       }
     );
