@@ -3,8 +3,9 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {SharedDataService} from '../../../../core/services/shared-data/shared-data.service';
 import {AuthService} from '../../../../core/services/auth/auth.service';
 import {UserService} from '../../../../core/services/user/user.service';
-import {BackupCodeModel} from '../../../../core/models/backup-code.model';
 import {NotificationService} from '../../../../core/services/notification/notification.service';
+
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-backup-code',
@@ -40,7 +41,11 @@ export class BackupCodeComponent implements OnInit {
     // TODO: delete used code on success @ backend
 
     this.userService.getUserBackupCodes(localStorage.getItem('username')).subscribe(
-      response => backupCodes = response.map(item => item.code),
+      response => {
+        backupCodes = response;
+        backupCodes = backupCodes.map(item => item.code);
+        console.log(backupCodes);
+      },
       error => this.authService.removeSession(),
       () => {
         if (!backupCodes.includes(this.inputCode)) {
