@@ -2,13 +2,6 @@
   flex: 1 1 auto;
 }
 
-.custom-link {
-  text-decoration: none;
-  color: #ffffff;
-  padding-right: 20px;
-  cursor: pointer;
-}
-
 custom-link-2 {
   text-decoration: none;
   color: #000000;

@@ -11,6 +11,7 @@ import {UserService} from './services/user/user.service';
 import {ProfileResolverService} from './resolvers/profile-resolver.service';
 import {NotificationService} from './services/notification/notification.service';
 import {AdditionalHeadersInterceptor} from './interceptors/additional-headers.interceptor';
+import {SharedDataService} from './services/shared-data/shared-data.service';
 
 @NgModule({
   imports: [
@@ -36,6 +37,7 @@ import {AdditionalHeadersInterceptor} from './interceptors/additional-headers.in
     UserService,
     ProfileResolverService,
     NotificationService,
+    SharedDataService,
     {provide: HTTP_INTERCEPTORS, useClass: AdditionalHeadersInterceptor, multi: true},
   ],
 })

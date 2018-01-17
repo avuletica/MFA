@@ -1,0 +1,14 @@
+<div fxLayout="row" fxLayoutAlign="center none" class="margin-top-5-pctl">
+  <form [formGroup]="backupFormGroup" (ngSubmit)="onSubmit()" style="padding: 30px">
+    <div fxLayout="column">
+      <mat-form-field>
+        <input matInput placeholder="Enter your backup code" autoComplete="off" type="text" [(ngModel)]="inputCode"
+               formControlName="inputCode">
+        <mat-icon matSuffix>code</mat-icon>
+      </mat-form-field>
+
+      <button mat-raised-button [disabled]="!backupFormGroup.valid">Submit</button>
+    </div>
+
+  </form>
+</div>

@@ -49,45 +49,33 @@
       <mat-expansion-panel hideToggle="true">
         <mat-expansion-panel-header>
           <mat-panel-title>
-            Authenticator app
+            Backup codes
           </mat-panel-title>
           <mat-panel-description>
-            Authenticator on android mobile
+            Two factor authentication with backup codes
             <mat-icon>android</mat-icon>
           </mat-panel-description>
         </mat-expansion-panel-header>
 
-        <mat-horizontal-stepper [linear]="isLinear">
-          <mat-step [stepControl]="firstFormGroup">
-            <form [formGroup]="firstFormGroup">
-              <ng-template matStepLabel>Verify password</ng-template>
-              <mat-form-field>
-                <input matInput placeholder="Password" formControlName="firstCtrl" required>
-              </mat-form-field>
-              <div>
-                <button mat-raised-button color="primary" matStepperNext>Next</button>
-              </div>
-            </form>
-          </mat-step>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+          <span>Enable back codes</span>
+          <mat-slide-toggle></mat-slide-toggle>
+        </div>
 
-          <mat-step [stepControl]="secondFormGroup">
-            <form [formGroup]="secondFormGroup">
-              <ng-template matStepLabel>Mobile token</ng-template>
-              <mat-form-field>
-                <input matInput placeholder="Token" formControlName="secondCtrl" required>
-              </mat-form-field>
-              <div>
-                <button mat-raised-button color="primary" matStepperPrevious>Back</button>
-                <button mat-raised-button color="primary" matStepperNext>Next</button>
-              </div>
-            </form>
-          </mat-step>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin-top-10">
+          <span>Generate new back codes</span>
+          <button mat-raised-button color="primary" (click)="generateBackupCodes()">
+            Generate
+          </button>
+        </div>
 
-          <mat-step>
-            <ng-template matStepLabel>Done</ng-template>
-            You have enabled mobile authenticator!
-          </mat-step>
-        </mat-horizontal-stepper>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="margin-top-10">
+          <span>Display backup codes</span>
+          <button mat-raised-button color="primary" (click)="openBackCodeDialog()">
+            Show
+          </button>
+        </div>
+
 
       </mat-expansion-panel>
       <!-- Text message codes-->

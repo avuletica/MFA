@@ -10,6 +10,10 @@ body, html {
   margin-top: 5%;
 }
 
+.margin-top-10 {
+  margin-top: 10px;
+}
+
 .center-vh {
   display: flex;
   justify-content: center;
@@ -23,6 +27,18 @@ body, html {
   padding: 10px 5px;
   font-weight: bold;
   font-size: larger;
+}
+
+.custom-link {
+  text-decoration: none;
+  color: #ffffff;
+  padding-right: 20px;
+  cursor: pointer;
+}
+
+.custom-link-2 {
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .profile-avatar {

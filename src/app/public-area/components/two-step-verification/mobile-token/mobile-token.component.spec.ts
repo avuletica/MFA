@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AuthenticationFormComponent } from './authentication-form.component';
+import { MobileTokenComponent } from './mobile-token.component';
 
-describe('AuthenticationFormComponent', () => {
-  let component: AuthenticationFormComponent;
-  let fixture: ComponentFixture<AuthenticationFormComponent>;
+describe('MobileTokenComponent', () => {
+  let component: MobileTokenComponent;
+  let fixture: ComponentFixture<MobileTokenComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AuthenticationFormComponent ]
+      declarations: [ MobileTokenComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AuthenticationFormComponent);
+    fixture = TestBed.createComponent(MobileTokenComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
