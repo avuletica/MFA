@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {UserModel} from '../../models/user.model';
 import {endpoints} from '../../utils/endpoints';
 import {BackupCodeModel} from '../../models/backup-code.model';
@@ -22,6 +22,10 @@ export class UserService {
 
   public generateBackupCodes(username: string): Observable<UserModel> {
     return this.http.get<UserModel>(endpoints().user.generateBackupCodes + username);
+  }
+
+  public updateBackupCodeActiveState(username: string, state: boolean): Observable<UserModel> {
+    return this.http.post<UserModel>(endpoints().user.updateBackupCodeActiveState + state + '/' + username , {});
   }
 
 }

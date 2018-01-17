@@ -48,4 +48,8 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  toggleBackupCodeActive(): void {
+    this.userService.updateBackupCodeActiveState(localStorage.getItem('username'), !this.userInformation.backupCodeActive).subscribe();
+  }
+
 }

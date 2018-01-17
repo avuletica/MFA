@@ -59,7 +59,9 @@
 
         <div fxLayout="row" fxLayoutAlign="space-between center">
           <span>Enable back codes</span>
-          <mat-slide-toggle></mat-slide-toggle>
+          <mat-slide-toggle [checked]="userInformation.backupCodeActive"
+                            (change)="toggleBackupCodeActive()">
+          </mat-slide-toggle>
         </div>
 
         <div fxLayout="row" fxLayoutAlign="space-between center" class="margin-top-10">
