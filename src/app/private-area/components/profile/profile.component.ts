@@ -3,6 +3,8 @@ import {UserService} from '../../../core/services/user/user.service';
 import {UserModel} from '../../../core/models/user.model';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import {MatDialog} from '@angular/material';
+import {BackupCodeDialogComponent} from '../backup-code-dialog/backup-code-dialog.component';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +17,10 @@ export class ProfileComponent implements OnInit {
   secondFormGroup: FormGroup;
   isLinear: boolean;
 
-  constructor(private route: ActivatedRoute, private _formBuilder: FormBuilder) {
+  constructor(private route: ActivatedRoute,
+              private _formBuilder: FormBuilder,
+              private userService: UserService,
+              public dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -29,6 +34,18 @@ export class ProfileComponent implements OnInit {
 
     this.userInformation = this.route.snapshot.data['userData'];
 
+  }
+
+  generateBackupCodes(): void {
+    this.userService.generateBackupCodes(localStorage.getItem('username')).subscribe(res => console.log(res));
+  }
+
+  openBackCodeDialog(): void {
+    const dialogRef = this.dialog.open(BackupCodeDialogComponent, {width: '200px'});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
 }

@@ -20,4 +20,8 @@ export class UserService {
     return this.http.get<BackupCodeModel>(endpoints().user.backupCodes + '/' + username);
   }
 
+  public generateBackupCodes(username: string): Observable<UserModel> {
+    return this.http.get<UserModel>(endpoints().user.generateBackupCodes + username);
+  }
+
 }

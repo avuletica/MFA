@@ -9,7 +9,8 @@ export function endpoints() {
     },
     user: {
       information: api + '/security/user',
-      backupCodes: api + '/security/backupCodes'
+      backupCodes: api + '/security/backupCodes',
+      generateBackupCodes: api + '/security/backupCodes/generate/'
     }
   };
 }

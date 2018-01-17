@@ -12,6 +12,8 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   imports:
@@ -29,7 +31,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
       MatCardModule,
       MatListModule,
       MatProgressBarModule,
-      MatExpansionModule
+      MatExpansionModule,
+      MatSlideToggleModule,
+      MatDialogModule
     ],
 })
 export class MaterialComponentsModule {
