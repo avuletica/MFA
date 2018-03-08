@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-two-step-verification',
@@ -6,8 +6,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./two-step-verification.component.css']
 })
 export class TwoStepVerificationComponent implements OnInit {
+  selectedAuthentication: string;
 
-  constructor() { }
+  authenticationChoices = [
+    'Secret question',
+    'Backup code',
+    'SMS code',
+    'Mobile token',
+    'QR token'
+  ];
+
+  constructor() {
+  }
 
   ngOnInit() {
   }

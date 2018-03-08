@@ -14,6 +14,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   imports:
@@ -33,7 +34,8 @@ import {MatDialogModule} from '@angular/material/dialog';
       MatProgressBarModule,
       MatExpansionModule,
       MatSlideToggleModule,
-      MatDialogModule
+      MatDialogModule,
+      MatRadioModule
     ],
 })
 export class MaterialComponentsModule {

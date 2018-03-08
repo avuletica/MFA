@@ -1,27 +1,12 @@
 <div fxLayout="row" fxLayoutAlign="center none" class="margin-top-5-pctl">
-
-  <div fxLayout="column">
-
-    <mat-card class="custom-link-2" [routerLink]="['/two-step-verification/mobile-token']">
-      Mobile token
-    </mat-card>
-
-    <mat-card class="custom-link-2 margin-top-10" [routerLink]="['/two-step-verification/qr-code']">
-      QR code
-    </mat-card>
-
-    <mat-card class="custom-link-2 margin-top-10" [routerLink]="['/two-step-verification/backup-code']">
-      Backup code
-    </mat-card>
-
-    <mat-card class="custom-link-2 margin-top-10" [routerLink]="['/two-step-verification/sms-code']">
-      SMS code
-    </mat-card>
-
-    <mat-card class="custom-link-2 margin-top-10" [routerLink]="['/two-step-verification/email-code']">
-      Email code
-    </mat-card>
-
+  <div fxLayout="column" class="mat-elevation-z9" style="min-width: 300px">
+    <div class="custom-header">Two-step Verification</div>
+    <mat-radio-group class="example-radio-group" [(ngModel)]="selectedAuthentication">
+      <mat-radio-button class="example-radio-button" *ngFor="let season of authenticationChoices" [value]="season">
+        {{season}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <button mat-raised-button color="primary">NEXT</button>
   </div>
 </div>
 

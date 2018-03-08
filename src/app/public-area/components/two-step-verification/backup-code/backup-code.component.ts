@@ -37,13 +37,10 @@ export class BackupCodeComponent implements OnInit {
   onSubmit(): void {
     let backupCodes;
 
-    // TODO: delete used code on success @ backend
-
     this.userService.getUserBackupCodes(localStorage.getItem('username')).subscribe(
       response => {
         backupCodes = response;
         backupCodes = backupCodes.map(item => item.code);
-        console.log(backupCodes);
       },
       error => this.authService.removeSession(),
       () => {
