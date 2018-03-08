@@ -7,10 +7,10 @@ import {HomeComponent} from '../components/home/home.component';
 import {SignupComponent} from '../components/signup/signup.component';
 import {TwoStepVerificationComponent} from '../components/two-step-verification/two-step-verification.component';
 import {BackupCodeComponent} from '../components/two-step-verification/backup-code/backup-code.component';
-import {EmailCodeComponent} from '../components/two-step-verification/email-code/email-code.component';
 import {MobileTokenComponent} from '../components/two-step-verification/mobile-token/mobile-token.component';
 import {QrCodeComponent} from '../components/two-step-verification/qr-code/qr-code.component';
 import {SmsCodeComponent} from '../components/two-step-verification/sms-code/sms-code.component';
+import {SecretQuestionComponent} from '../components/two-step-verification/secret-question/secret-question.component';
 
 @NgModule({
   imports: [
@@ -24,7 +24,7 @@ import {SmsCodeComponent} from '../components/two-step-verification/sms-code/sms
     SignupComponent,
     TwoStepVerificationComponent,
     BackupCodeComponent,
-    EmailCodeComponent,
+    SecretQuestionComponent,
     MobileTokenComponent,
     QrCodeComponent,
     SmsCodeComponent
