@@ -67,6 +67,7 @@ export class LoginFormComponent implements OnInit {
           const token = this.authService.extractJwtToken(response);
           this.sharedDataService.setJwtToken(token);
           this.authService.setSession(this.sharedDataService.getJwtToken());
+          localStorage.setItem('username', this.username);
           this.router.navigate(['/profile']);
         }
       },

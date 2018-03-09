@@ -11,6 +11,7 @@ import {endpoints} from '../../utils/endpoints';
 @Injectable()
 export class AuthService {
   readonly authTokenKey = 'authToken';
+  readonly userKey = 'username';
   redirectUrl: string;
 
   constructor(private http: HttpClient, private router: Router) {
@@ -60,6 +61,7 @@ export class AuthService {
 
   public removeSession(): void {
     localStorage.removeItem(this.authTokenKey);
+    localStorage.removeItem(this.userKey);
   }
 
 }

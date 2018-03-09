@@ -43,15 +43,12 @@ export class ProfileComponent implements OnInit {
   openBackCodeDialog(): void {
     const dialogRef = this.dialog.open(BackupCodeDialogComponent, {width: '200px'});
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+    dialogRef.afterClosed().subscribe();
   }
 
   toggleTwoFactorAuthentication(): void {
     this.userService.updateTwoFactorAuthenticationActiveState(localStorage.getItem('username'),
-      !this.userInformation.twoFactorAuthenticationActive).
-    subscribe();
+      !this.userInformation.twoFactorAuthenticationActive).subscribe();
   }
 
 }
