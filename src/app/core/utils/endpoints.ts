@@ -13,7 +13,8 @@ export function endpoints() {
       generateBackupCodes: api + '/security/backupCodes/generate/',
       validateBackupCode: api + '/security/validateBackupCode/',
       updateTwoFactorAuthenticationActiveState: api + '/security/updateTwoFactorAuthenticationActiveState/',
-      twoFactorAuthenticationActiveState: api + '/security/twoFactorAuthenticationActiveState/'
+      twoFactorAuthenticationActiveState: api + '/security/twoFactorAuthenticationActiveState/',
+      validateSecretQuestionAnswer: api + '/security/validateSecretQuestionAnswer/'
     }
   };
 }

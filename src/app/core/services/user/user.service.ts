@@ -48,4 +48,8 @@ export class UserService {
     return this.http.get(endpoints().user.validateBackupCode + code + '/' + username, {});
   }
 
+  public validateSecretQuestionAnswer(answer: string, username: string): any {
+    return this.http.get(endpoints().user.validateSecretQuestionAnswer + answer + '/' + username, {});
+  }
+
 }
