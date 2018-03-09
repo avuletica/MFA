@@ -11,7 +11,9 @@ export function endpoints() {
       information: api + '/security/user',
       backupCodes: api + '/security/backupCodes',
       generateBackupCodes: api + '/security/backupCodes/generate/',
-      updateBackupCodeActiveState: api + '/security/updateBackupCodeActiveState/'
+      validateBackupCode: api + '/security/validateBackupCode/',
+      updateTwoFactorAuthenticationActiveState: api + '/security/updateTwoFactorAuthenticationActiveState/',
+      twoFactorAuthenticationActiveState: api + '/security/twoFactorAuthenticationActiveState/'
     }
   };
 }

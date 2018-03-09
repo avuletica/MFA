@@ -5,7 +5,7 @@ export class UserModel {
   username?: string;
   password?: string;
   email?: string;
-  backupCodeActive: boolean;
+  twoFactorAuthenticationActive: boolean;
   backupCodes?: Array<string>;
 
   constructor(id?: number,
@@ -23,7 +23,7 @@ export class UserModel {
     this.username = username;
     this.password = password;
     this.email = email;
-    this.backupCodeActive = backupCodeActive;
+    this.twoFactorAuthenticationActive = backupCodeActive;
     this.backupCodes = backupCodes;
   }
 }

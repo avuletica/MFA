@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
@@ -10,7 +10,6 @@ import {AuthGuardService} from './guards/auth-guard.service';
 import {UserService} from './services/user/user.service';
 import {ProfileResolverService} from './resolvers/profile-resolver.service';
 import {NotificationService} from './services/notification/notification.service';
-import {AdditionalHeadersInterceptor} from './interceptors/additional-headers.interceptor';
 import {SharedDataService} from './services/shared-data/shared-data.service';
 
 @NgModule({
@@ -38,7 +37,6 @@ import {SharedDataService} from './services/shared-data/shared-data.service';
     ProfileResolverService,
     NotificationService,
     SharedDataService,
-    {provide: HTTP_INTERCEPTORS, useClass: AdditionalHeadersInterceptor, multi: true},
   ],
 })
 export class CoreModule {

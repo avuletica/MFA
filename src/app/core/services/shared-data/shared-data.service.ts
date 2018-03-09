@@ -1,21 +1,42 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class SharedDataService {
-  private jwtToken = new BehaviorSubject<string>('');
+  private _jwtToken = new BehaviorSubject<string>('');
+  private _username = new BehaviorSubject<string>('');
+  private _password = new BehaviorSubject<string>('');
 
   // Using asObservable to prevent new values being pushed to the BehaviorSubject from outside the service
-  public currentJwtToken = this.jwtToken.asObservable();
+  public currentJwtToken = this._jwtToken.asObservable();
+  public currentUsername = this._username.asObservable();
+  public currentPassword = this._password.asObservable();
+
+  constructor() {
+  }
 
   getJwtToken(): string {
-    return this.jwtToken.getValue();
+    return this._jwtToken.getValue();
   }
 
-  updateJwtToken(token: string) {
-    this.jwtToken.next(token);
+  setJwtToken(value: string) {
+    this._jwtToken.next(value);
   }
 
-  constructor() { }
+  getUsername(): string {
+    return this._username.getValue();
+  }
+
+  setUsername(value: string) {
+    this._username.next(value);
+  }
+
+  getPassword(): string {
+    return this._password.getValue();
+  }
+
+  setPassword(value: string) {
+    this._password.next(value);
+  }
 
 }

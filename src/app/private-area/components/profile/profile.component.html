@@ -58,9 +58,9 @@
         </mat-expansion-panel-header>
 
         <div fxLayout="row" fxLayoutAlign="space-between center">
-          <span>Enable back codes</span>
-          <mat-slide-toggle [checked]="userInformation.backupCodeActive"
-                            (change)="toggleBackupCodeActive()">
+          <span>Enable two factor authentication</span>
+          <mat-slide-toggle [checked]="userInformation.twoFactorAuthenticationActive"
+                            (change)="toggleTwoFactorAuthentication()">
           </mat-slide-toggle>
         </div>
 

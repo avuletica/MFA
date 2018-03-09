@@ -48,8 +48,10 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  toggleBackupCodeActive(): void {
-    this.userService.updateBackupCodeActiveState(localStorage.getItem('username'), !this.userInformation.backupCodeActive).subscribe();
+  toggleTwoFactorAuthentication(): void {
+    this.userService.updateTwoFactorAuthenticationActiveState(localStorage.getItem('username'),
+      !this.userInformation.twoFactorAuthenticationActive).
+    subscribe();
   }
 
 }

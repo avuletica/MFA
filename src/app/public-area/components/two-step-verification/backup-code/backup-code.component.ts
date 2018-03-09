@@ -7,6 +7,8 @@ import {NotificationService} from '../../../../core/services/notification/notifi
 
 import 'rxjs/add/operator/map';
 import {Router} from '@angular/router';
+import {isNullOrUndefined} from "util";
+import {UserModel} from '../../../../core/models/user.model';
 
 @Component({
   selector: 'app-backup-code',
@@ -22,7 +24,8 @@ export class BackupCodeComponent implements OnInit {
               private userService: UserService,
               private formBuilder: FormBuilder,
               private router: Router,
-              public notificationService: NotificationService) {
+              public notificationService: NotificationService,
+              public sharedDataService: SharedDataService) {
   }
 
   ngOnInit() {
@@ -35,24 +38,40 @@ export class BackupCodeComponent implements OnInit {
   }
 
   onSubmit(): void {
-    let backupCodes;
-
-    this.userService.getUserBackupCodes(localStorage.getItem('username')).subscribe(
+    this.userService.validateBackupCode(this.inputCode, this.sharedDataService.getUsername()).subscribe(
       response => {
-        backupCodes = response;
-        backupCodes = backupCodes.map(item => item.code);
-      },
-      error => this.authService.removeSession(),
-      () => {
-        if (!backupCodes.includes(this.inputCode)) {
-          this.notificationService.openSnackBar('Invalid backup code', '');
-          this.authService.removeSession();
+        if (response === true) {
+          this.attemptLogin();
         } else {
-          this.router.navigate(['/profile']);
+          this.notificationService.openSnackBar('Invalid backup code', 'OK');
         }
       }
     );
 
+  }
+
+  attemptLogin(): void {
+    const user = new UserModel();
+    user.username = this.sharedDataService.getUsername();
+    user.password = this.sharedDataService.getPassword();
+
+    this.authService.login(user).subscribe(
+      response => {
+        if (response.status === 200) {
+          const token = this.authService.extractJwtToken(response);
+          this.sharedDataService.setJwtToken(token);
+          this.authService.setSession(this.sharedDataService.getJwtToken());
+          this.router.navigate(['/profile']);
+        }
+      },
+      error => {
+        if (error.status === 401) {
+          this.notificationService.openSnackBar(error.error.message, '');
+        } else if (isNullOrUndefined(error.error.message)) {
+          this.notificationService.openSnackBar('Authentication server is unavailable', '');
+        }
+      }
+    );
   }
 
 }
